@@ -1,4 +1,4 @@
-// console.time('setup');
+console.time('setup');
 
 const fs = require('node:fs');
 const path = require('node:path');
