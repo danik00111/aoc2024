@@ -3,10 +3,8 @@ console.time('setup');
 const fs = require('node:fs');
 const path = require('node:path');
 /* ./input.txt:
-[5-digit number]   [5-digit number]
-[5-digit number]   [5-digit number]
-[5-digit number]   [5-digit number]
-...(1000 lines total) */
+1000 lines, each containing two 5-digit numbers separated by 3 spaces
+*/
 const data = fs.readFileSync(path.join(`${__dirname}/input.txt`), 'utf8').split('\n').reduce((a,v)=>{
   a[0].push(Number(v.split('   ')[0]));
   a[1].push(Number(v.split('   ')[1]));
