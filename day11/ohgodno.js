@@ -39,7 +39,7 @@ function add(a, b) {
   }
   if(carry == 1) sum = carry + sum;
   return sum;
-} // Solving Codewars puzzles coming in clutch!
+} // I HATE BIGINT I HATE BIGINT I HATE BIGINT I HATE BIGINT I HATE BIGINT I HATE BIGINT 
 row = input;
 freq = {};
 row.forEach(x=>{ freq[x] = '1' });
