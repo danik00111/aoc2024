@@ -26,21 +26,40 @@ console.log(row.length);
 console.timeEnd('part 1');
 console.time('part 2');
 
+function add(a, b) {
+  if(a.length < b.length) { x=a; y=b } else { x=b; y=a }
+  while(x.length < y.length) x = '0'+x;
+  sum = ''; carry = 0;
+  for(let i = x.length-1; i>=0; i-- ) {
+    p = parseInt(x.charAt(i));
+    q = parseInt(y.charAt(i));
+    partsum = p+q+carry;
+    sum = (partsum)%10 + sum;
+    if(partsum>=10) carry = 1; else carry = 0;
+  }
+  if(carry == 1) sum = carry + sum;
+  return sum;
+} // Solving Codewars puzzles coming in clutch!
 row = input;
-const start = Date.now();
+freq = {};
+row.forEach(x=>{ freq[x] = '1' });
+let temp = {};
 for(let blinks=0;blinks<75;blinks++) {
-  console.log('t+'+(Date.now()-start)+': '+blinks+'/75');
-  row = row.flatMap(x=>(
-    x==0 ?1 :(
-      String(x).length%2 ? x*2024 :(
-        [
-          Number(String(x).slice(0,String(x).length/2)),
-          Number(String(x).slice(String(x).length/2))
-        ]
+  temp = {};
+  Object.entries(freq).forEach(([x,amt])=>{
+    const thing = +x == 0 ?[1] :(
+      x.length%2 ? [x*2024] :(
+        [ +(x.slice(0,x.length/2)), +(x.slice(x.length/2)) ]
       )
-    )
-  ))
+    );
+    thing.forEach(x=>{ temp[x] = add((temp[x]|0)+'',amt+'') });
+  });
+  freq = temp;
 }
-console.log(row.length);
+
+const amount = Object.entries(freq).length;
+console.log(Object.values(freq).reduce((a,v,i)=>{
+  return add(a+'',v+'')
+},'0'));
 
 console.timeEnd('part 2');
