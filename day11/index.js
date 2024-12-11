@@ -5,7 +5,7 @@ const path = require('node:path');
 /* ./input.txt: [literally 8 non-negative integers, some zero, some small and some in the thousands/millions] */
 const input = fs.readFileSync(path.join(`${__dirname}/input.txt`), 'utf8').split(' ').map(Number);
 
-console.timeEnd('setup');
+console.timeEnd('setup'); // 0.13862ms
 console.time('part 1');
 
 let row = input;
@@ -23,7 +23,7 @@ for(let blinks=0;blinks<25;blinks++) {
 }
 console.log(row.length);
 
-console.timeEnd('part 1');
+console.timeEnd('part 1'); // 65.0552ms
 console.time('part 2');
 
 function add(a, b) {
@@ -52,14 +52,13 @@ for(let blinks=0;blinks<75;blinks++) {
         [ +(x.slice(0,x.length/2)), +(x.slice(x.length/2)) ]
       )
     );
-    thing.forEach(x=>{ temp[x] = add((temp[x]|0)+'',amt+'') });
+    thing.forEach(x=>{ temp[x] = add((temp[x]||'0')+'',amt+'') });
   });
   freq = temp;
 }
 
-const amount = Object.entries(freq).length;
-console.log(Object.values(freq).reduce((a,v,i)=>{
+console.log(Object.values(freq).reduce((a,v)=>{
   return add(a+'',v+'')
 },'0'));
 
-console.timeEnd('part 2');
+console.timeEnd('part 2'); // 187.48122ms
