@@ -2,3 +2,4 @@
 # > AOC is free to use, but not free to copy.
 # - https://adventofcode.com/about's FAQ
 ignore.*
+.DS_Store
