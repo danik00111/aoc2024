@@ -2,7 +2,7 @@
 // So I used find-replace and formatted it into JSON.
 console.time('setup');
 
-/* input:
+/* ./input.json:
   array of 320 objects each with 3 two-dimensional vectors, "3", "1", and "prize",
   with the "3" and "1" vectors being 2-digit, and the "prize" vectors being up to 5-digit
 */
