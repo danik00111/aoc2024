@@ -1,0 +1,45 @@
+ax+by = n
+cx+dy = m
+
+ax+by = n
+by = n-ax
+y = (n-ax)/b
+
+cx+dy = m
+dy = m-cx
+y = (m-cx)/d
+
+(n-ax)/b = (m-cx)/d
+d(n-ax) = b(m-cx)
+dn-adx = bm-bcx
+dn-adx = bm-bcx
+adx-bcx = dn-bm
+x(ad-bc) = dn-bm
+x = (dn-bm)/(ad-bc)
+
+y = (n-a(dn-bm)/(ad-bc))/b
+y = ( n - ((adn-abm)/(ad-bc)) )/b
+y = (
+  ( (n(ad-bc)) / (ad-bc) )
+  -
+  ( (adn-abm) / (ad-bc) )
+)/b
+y = (
+  (  (n(ad-bc)) - (adn-abm)  ) / (ad-bc)
+)/b
+y = (
+  n(ad-bc) - a(dn-bm)
+)/(
+  b(ad-bc)
+)
+y = (
+  abm + adn - bcn - adn
+)/(
+  b(ad-bc)
+)
+y = (
+  abm - bcn
+)/(
+  b(ad-bc)
+)
+y = (am-cn)/(ad-bc)
