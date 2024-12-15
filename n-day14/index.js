@@ -23,16 +23,16 @@ console.timeEnd('setup');
 console.time('part 1');
 
 console.log(input.map(data=>([
-  actualmod((data.p[1]+(data.v[1]*100)),height),
-  actualmod((data.p[0]+(data.v[0]*100)),width),
-])).filter(x=>(
+  actualmod((data.p[1]+(data.v[1]*5)),height),
+  actualmod((data.p[0]+(data.v[0]*5)),width),
+]))/* .filter(x=>(
   x[0] != (height-1)/2 &&
   x[1] != (width-1)/2
 )).map(x=>(
   (x[0]>(height-1)/2)*1 + (x[1] > (width-1)/2)*2
 )).reduce((a,v)=>{
   a[v]++;return a;
-},[0,0,0,0]).reduce((a,v)=>a*v,1))
+},[0,0,0,0]).reduce((a,v)=>a*v,1) */)
 
 console.timeEnd('part 1');
 console.time('part 2');
@@ -42,24 +42,26 @@ const display =()=> {console.log(
     a[v.p[1]][v.p[0]] = '#';
     return a;
   },
-  Array(width).fill('.'.repeat(height)).map(x=>x.split('')))
+  Array(height).fill('.'.repeat(width)).map(x=>x.split('')))
   .map(x=>x.join('')).join('\n')
 )}
+let steps = 6250;
+/* "Why 6250"? Because I randomly guessed
+it in the website and it said "too low"! */
 let canvas = input.map(data=>({
   p:[
-    actualmod((data.p[1]+(data.v[1]*6250)),height), // "Why 6250"? Because I randomly guessed
-    actualmod((data.p[0]+(data.v[0]*6250)),width), // it in the website and it said "too low"!
+    actualmod((data.p[0]+(data.v[0]*steps)),width),
+    actualmod((data.p[1]+(data.v[1]*steps)),height),
   ],
   v: data.v
 }));
 // 6250: too low
 // 7500: too high
-let steps = 6250;
 process.stdin.on('data',_=>{
   canvas = canvas.map(data=>({
     p:[
-      actualmod((data.p[1]+data.v[1]),height), // NOTE: Are these connected the wrong way?
       actualmod((data.p[0]+data.v[0]),width),
+      actualmod((data.p[1]+data.v[1]),height),
     ],
     v: data.v
   }));
